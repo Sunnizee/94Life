@@ -38,15 +38,22 @@
     section{padding:4rem 2rem; text-align:center}
     section:nth-child(even){background:#f9f9f9}
 
-    .video{width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); background:#000;}
+    /* 影片卡片區 */
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:1.5rem;
+      margin-top:1.5rem;
+    }
+    .video-card{
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      padding:1rem;
+    }
+    .video{width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; background:#000;}
     .video iframe{width:100%; height:100%; border:0}
-
-    /* 美國生活影片：手機橫滑，桌機並排 */
-    .video-row{display:flex; gap:1rem; overflow-x:auto; padding-bottom:.5rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;}
-    .video-row::-webkit-scrollbar{height:8px}
-    .video-row::-webkit-scrollbar-thumb{background:#ddd; border-radius:8px}
-    .video-row .video{flex:0 0 560px; max-width:90vw; scroll-snap-align:start;}
-    @media (min-width:1024px){.video-row{overflow:visible; justify-content:center;} .video-row .video{flex:0 0 45%; max-width:560px;}}
+    .video-title{margin-top:.75rem; font-weight:600; font-size:1rem;}
 
     .button{display:inline-block; margin:1rem; padding:.75rem 1.5rem; background:var(--brand); color:#fff; text-decoration:none; border-radius:30px; font-weight:700; transition:.2s;}
     .button:hover{background:var(--brand-hover)}
@@ -93,33 +100,7 @@
     <h2>作品</h2>
 
     <h3>🎬 美國生活系列</h3>
-    <div class="video-row">
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/uVGMNVVSvWU" title="Sunnizee 美國生活 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/cfkG98Qg6Jo" title="Sunnizee 美國生活 2" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <h3>⭐ 精選作品</h3>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/w_mSG94L69Y?si=nuJE1d82kTZJF0tF" title="Sunnizee 精選作品" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <!-- 聯絡 -->
-  <section id="contact">
-    <h2>聯絡與社群</h2>
-    <p>歡迎追蹤我的社群或聯絡我合作 ✨</p>
-    <a class="button" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer">追蹤 IG</a>
-    <a class="button" href="https://www.youtube.com/@94life_sunnizee" target="_blank" rel="noopener noreferrer">訂閱 YouTube</a>
-    <a class="button" href="mailto:yourmail@example.com">聯絡我</a>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>Sunny 🌞 | 94Life 個人網站<br>&copy; 2025 All Rights Reserved.</p>
-  </footer>
-</body>
-</html>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/uVGMNVVSvWU" title="Sunnizee 美國生活 1" loading="lazy" allow="accelerometer; clipboard-write; e
