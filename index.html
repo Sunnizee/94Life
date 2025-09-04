@@ -39,20 +39,23 @@
     section:nth-child(even){background:#f9f9f9}
 
     /* 影片卡片區 */
-    .video-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:1.5rem;
-      margin-top:1.5rem;
+     .video-row{
+      display:flex; gap:1rem; overflow-x:auto; padding-bottom:.5rem;
+      scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
     }
-    .video-card{
-      background:#fff;
-      border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      padding:1rem;
-      max-width:560px;
-      margin:0 auto;
+    .video-row::-webkit-scrollbar{height:8px}
+    .video-row::-webkit-scrollbar-thumb{background:#ddd; border-radius:8px}
+
+    .video-row .video{
+      flex:0 0 560px;          /* 卡片寬度（手機橫滑時每次一張） */
+      max-width:90vw;          /* 手機視窗下不會超出 */
+      scroll-snap-align:start; /* 滑到卡片邊緣停住 */
     }
+
+    /* 寬螢幕時改為並排兩張 */
+    @media (min-width:1024px){
+      .video-row{overflow:visible; justify-content:center;}
+      .video-row .video{flex:0 0 45%; max-width:560px;}
     .video{width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; background:#000;}
     .video iframe{width:100%; height:100%; border:0}
     .video-title{margin-top:.75rem; font-weight:600; font-size:1rem;}
@@ -61,6 +64,11 @@
     .button:hover{background:var(--brand-hover)}
 
     footer{padding:2rem; background:#222; color:#fff; text-align:center; font-size:.9rem}
+       .video-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:1.5rem;
+      margin-top:1.5rem;
 
     @media (max-width:640px){
       header{padding:.8rem 1rem}
@@ -84,7 +92,7 @@
     </a>
     <nav>
       <a href="#about">關於我</a>
-      <a href="#works-america">作品</a>
+      <a href="#works-america">作品</a> <!-- 導覽直接連到美國生活 -->
       <a href="#contact">聯絡</a>
     </nav>
   </header>
@@ -122,15 +130,9 @@
     <div class="video-grid">
       <div class="video-card">
         <div class="video">
-          <iframe src="https://www.youtube.com/embed/w_mSG94L69Y?si=nuJE1d82kTZJF0tF" title="Sunnizee 精選作品 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/w_mSG94L69Y?si=nuJE1d82kTZJF0tF" title="Sunnizee 精選作品" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="video-title">精選作品 1</div>
-      </div>
-      <div class="video-card">
-        <div class="video">
-          <iframe src="https://www.youtube.com/embed/cC-q4Y8R41Y?si=rusBe31wcGBjd9_x" title="Sunnizee 精選作品 2" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <div class="video-title">精選作品 2</div>
+        <div class="video-title">精選作品</div>
       </div>
     </div>
   </section>
@@ -150,4 +152,3 @@
   </footer>
 </body>
 </html>
-
