@@ -19,80 +19,57 @@
 
   <style>
     :root{
-      --brand:#e1306c;
-      --brand-hover:#c2185b;
-      --text:#333;
-      --bg:#fdfdfd;
+      --brand:#e1306c; --brand-hover:#c2185b;
+      --text:#333; --bg:#fdfdfd;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Noto Serif TC', serif;
-      background:var(--bg);
-      color:var(--text);
-      scroll-behavior:smooth;
-    }
+    body{margin:0; font-family:'Noto Serif TC', serif; background:var(--bg); color:var(--text); scroll-behavior:smooth;}
+
     header{
-      background:#fff;
-      position:sticky; top:0; z-index:1000;
-      padding:1rem 2rem;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      background:#fff; position:sticky; top:0; z-index:1000;
+      padding:1rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.05);
       display:flex; justify-content:space-between; align-items:center;
     }
-    .brand{
-      display:inline-flex; align-items:center; gap:.5rem;
-      text-decoration:none; color:var(--text); font-weight:700;
-    }
+    .brand{display:inline-flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--text); font-weight:700;}
     .brand:hover{opacity:.9}
     .brand h1{margin:0; font-size:1.4rem}
-    nav a{
-      margin-left:1rem; text-decoration:none; color:var(--text); font-weight:700;
-    }
+    nav a{margin-left:1rem; text-decoration:none; color:var(--text); font-weight:700;}
+
     section{padding:4rem 2rem; text-align:center}
     section:nth-child(even){background:#f9f9f9}
 
-    .video{
-      width:100%;
-      aspect-ratio:16/9;
-      border-radius:12px; overflow:hidden;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      background:#000;
-    }
+    .video{width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); background:#000;}
     .video iframe{width:100%; height:100%; border:0}
 
-    /* 美國生活橫向排版 */
-    .video-grid{
-      display:flex;
-      justify-content:center;
-      gap:1.5rem;
-      flex-wrap:wrap;
-      margin-top:1rem;
+    /* ⬇ 美國生活：手機可水平滑動，桌機並排 */
+    .video-row{
+      display:flex; gap:1rem; overflow-x:auto; padding-bottom:.5rem;
+      scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
     }
-    .video-grid .video{
-      flex:1 1 45%; /* 每個影片大約佔一半 */
-      max-width:560px;
-      min-width:300px;
+    .video-row::-webkit-scrollbar{height:8px}
+    .video-row::-webkit-scrollbar-thumb{background:#ddd; border-radius:8px}
+
+    .video-row .video{
+      flex:0 0 560px;          /* 卡片寬度（手機橫滑時每次一張） */
+      max-width:90vw;          /* 手機視窗下不會超出 */
+      scroll-snap-align:start; /* 滑到卡片邊緣停住 */
     }
 
-    .button{
-      display:inline-block;
-      margin:1rem;
-      padding:.75rem 1.5rem;
-      background:var(--brand);
-      color:#fff; text-decoration:none;
-      border-radius:30px; font-weight:700;
-      transition:.2s;
+    /* 寬螢幕時改為並排兩張 */
+    @media (min-width:1024px){
+      .video-row{overflow:visible; justify-content:center;}
+      .video-row .video{flex:0 0 45%; max-width:560px;}
     }
+
+    .button{display:inline-block; margin:1rem; padding:.75rem 1.5rem; background:var(--brand); color:#fff; text-decoration:none; border-radius:30px; font-weight:700; transition:.2s;}
     .button:hover{background:var(--brand-hover)}
+
     footer{padding:2rem; background:#222; color:#fff; text-align:center; font-size:.9rem}
 
     @media (max-width:640px){
       header{padding:.8rem 1rem}
       nav{display:flex; gap:.25rem}
-      nav a{
-        display:inline-block; padding:.5rem .75rem;
-        background:#f3f3f3; border-radius:999px; margin:0;
-      }
+      nav a{display:inline-block; padding:.5rem .75rem; background:#f3f3f3; border-radius:999px; margin:0;}
       section{padding:3rem 1.25rem}
       .button{display:block; width:92%; max-width:420px; margin:.6rem auto}
       .brand h1{font-size:1.25rem}
@@ -101,17 +78,13 @@
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4KGW4RW"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4KGW4RW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header -->
   <header>
     <a class="brand" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer" aria-label="前往 Sunnizee 的 IG">
-      <span>🌞</span>
-      <h1>Sunnizee</h1>
+      <span>🌞</span><h1>Sunnizee</h1>
     </a>
     <nav>
       <a href="#about">關於我</a>
@@ -128,22 +101,12 @@
       目前正在經營 Reels 與 YouTube，分享生活與創意。</p>
 
     <h3>🎬 美國生活系列</h3>
-    <div class="video-grid">
+    <div class="video-row">
       <div class="video">
-        <iframe 
-          src="https://www.youtube.com/embed/uVGMNVVSvWU"
-          title="Sunnizee 美國生活 1"
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/uVGMNVVSvWU" title="Sunnizee 美國生活 1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="video">
-        <iframe 
-          src="https://www.youtube.com/embed/cfkG98Qg6Jo"
-          title="Sunnizee 美國生活 2"
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/cfkG98Qg6Jo" title="Sunnizee 美國生活 2" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -153,12 +116,7 @@
     <h2>精選作品</h2>
     <p>這是我的精選影片：</p>
     <div class="video">
-      <iframe 
-        src="https://www.youtube.com/embed/w_mSG94L69Y?si=nuJE1d82kTZJF0tF" 
-        title="Sunnizee 精選作品"
-        loading="lazy"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/w_mSG94L69Y?si=nuJE1d82kTZJF0tF" title="Sunnizee 精選作品" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </section>
 
