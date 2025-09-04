@@ -17,129 +17,159 @@
   <!-- End Google Tag Manager -->
 
   <style>
-    body {
-      margin: 0;
+    :root{
+      --bg:#fdfdfd; --fg:#333; --muted:#666; --card:#fff;
+      --accent:#e1306c; --accent-d:#c2185b;
+      --max: 820px;
+      --radius:16px;
+      --shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
       font-family: 'Noto Serif TC', serif;
-      background: #fdfdfd;
-      color: #333;
-      scroll-behavior: smooth;
+      background:var(--bg); color:var(--fg);
+      scroll-behavior:smooth;
     }
-    header {
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px;}
+    header{
+      background:#fff; position:sticky; top:0; z-index:1000;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
     }
-    header h1 { margin: 0; font-size: 1.4rem; }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 20px; max-width:var(--max); margin:0 auto;
     }
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
+    h1{margin:0; font-size:1.25rem}
+    nav a{
+      display:inline-block; margin-left:14px; text-decoration:none;
+      color:var(--fg); font-weight:700;
     }
-    section:nth-child(even) { background: #f9f9f9; }
-    iframe {
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin: 1rem auto;
+
+    section{padding:56px 0; text-align:center;}
+    section:nth-of-type(even){background:#f9f9f9;}
+    .section-title{font-size:1.6rem; margin:0 0 16px}
+    .lead, .copy{
+      margin:0 auto 16px; line-height:1.8; color:var(--fg);
+      max-width: 36em; /* 限制行寬，手機更好讀 */
+      text-wrap:pretty;
     }
-    .button {
-      display: inline-block;
-      margin: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: #e1306c;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
+    .muted{color:var(--muted)}
+    /* 讓錨點捲動時不被 sticky header 擋住 */
+    section{scroll-margin-top:72px;}
+
+    /* 影片卡片 */
+    .video-wrap{
+      margin:18px auto 0; background:var(--card); border-radius:12px;
+      box-shadow:var(--shadow); padding:12px; width:min(100%, 640px);
     }
-    .button:hover { background: #c2185b; }
-    footer {
-      padding: 2rem;
-      background: #222;
-      color: #fff;
-      text-align: center;
-      font-size: 0.9rem;
+    .video{
+      position:relative; width:100%; padding-bottom:56.25%; border-radius:12px; overflow:hidden;
+    }
+    .video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+    /* 按鈕群組 */
+    .buttons{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .button{
+      display:inline-block; padding:.75rem 1.4rem; border-radius:999px;
+      background:var(--accent); color:#fff; text-decoration:none; font-weight:700;
+      box-shadow:var(--shadow); transition:.2s ease;
+    }
+    .button:hover{background:var(--accent-d); transform:translateY(-1px)}
+    .button:active{transform:none}
+
+    footer{
+      padding:28px 20px; background:#222; color:#fff; text-align:center; font-size:.9rem;
+    }
+
+    /* 手機微調 */
+    @media (max-width:480px){
+      h1{font-size:1.1rem}
+      .section-title{font-size:1.4rem}
+      .lead, .copy{font-size:1rem}
+      .header-inner{padding:10px 16px}
+      nav a{margin-left:10px}
+      .buttons{flex-direction:column; align-items:center}
+      .button{width:100%; max-width:320px; text-align:center}
     }
   </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4KGW4RW"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4KGW4RW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header -->
   <header>
-    <h1>Sunnizee 🌞</h1>
-    <nav>
-      <a href="#about">關於我</a>
-      <a href="#works">作品</a>
-      <a href="#contact">聯絡</a>
-    </nav>
+    <div class="header-inner">
+      <h1>Sunnizee 🌞</h1>
+      <nav>
+        <a href="#about">關於我</a>
+        <a href="#works">作品</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </div>
   </header>
 
   <!-- About -->
-  <section id="about">
-    <h2>關於我</h2>
-    <p>嗨～大家好 我是Sunny桑膩☀️ 
-      也可以叫我麻糬！ <br>
-    94Life 的創作者，喜歡影片製作、旅行
-      音樂和Marketing。<br>
-    目前正在經營 Reels 與 YouTube
-      分享生活與創意。</p>
+  <section id="about" class="container">
+    <h2 class="section-title">關於我</h2>
+    <p class="lead">嗨～我是 Sunny桑膩☀️ 也可以叫我麻糬！ 94Life 的創作者，熱愛影片製作、旅行、音樂與Marketing。</p>
+    <p class="copy">現在主要經營 Reels 與 YouTube，分享我的生活靈感與有趣的小劇場。如果你也喜歡輕鬆、真實、搞笑的日常，歡迎追蹤～</p>
 
-    <h3>🎬 美國生活 Playlist</h3>
-    <iframe 
-      src="https://www.youtube.com/embed/videoseries?list=PLBZqvC2qnQsA9F2ev1nI-6ZgXl0D3e9EX"
-      title="Sunnizee 美國生活 Playlist"
-      loading="lazy"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <h3 class="section-title" style="font-size:1.25rem">🎬 美國生活 Playlist</h3>
+    <div class="video-wrap">
+      <div class="video">
+        <iframe 
+          src="https://www.youtube.com/embed/videoseries?list=PLBZqvC2qnQsA9F2ev1nI-6ZgXl0D3e9EX"
+          title="Sunnizee 美國生活 Playlist"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
   </section>
 
   <!-- Works -->
   <section id="works">
-    <h2>作品展示</h2>
-    <p>這是我的精選影片：</p>
-    <iframe 
-      src="https://www.youtube.com/embed/cfkG98Qg6Jo" 
-      title="Sunnizee 94Life 精選影片"
-      loading="lazy"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <div class="container">
+      <h2 class="section-title">作品展示</h2>
+      <p class="muted">這是我的精選影片：</p>
+      <div class="video-wrap">
+        <div class="video">
+          <iframe 
+            src="https://www.youtube.com/embed/cfkG98Qg6Jo" 
+            title="Sunnizee 94Life 精選影片"
+            loading="lazy"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Contact / Social -->
   <section id="contact">
-    <h2>聯絡與社群</h2>
-    <p>歡迎追蹤我的社群或聯絡我合作 ✨</p>
-    <a class="button" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer">追蹤 IG</a>
-    <a class="button" href="https://www.youtube.com/@sunnizee" target="_blank" rel="noopener noreferrer">訂閱 YouTube</a>
-    <a class="button" href="mailto:yourmail@example.com">聯絡我</a>
+    <div class="container">
+      <h2 class="section-title">Contact聯絡我</h2>
+      <p class="copy">歡迎追蹤我的IG/YT Happy to share with you ✨</p>
+      <div class="buttons">
+        <a class="button" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer">追蹤 IG</a>
+        <a class="button" href="https://www.youtube.com/@sunnizee" target="_blank" rel="noopener noreferrer">訂閱 YouTube</a>
+        <a class="button" href="mailto:yourmail@example.com">聯絡我</a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Sunny 🌞 | 94Life 個人網站<br>&copy; 2025 All Rights Reserved.</p>
+    <div class="container">
+      <p>Sunny 🌞 | 94Life 個人網站<br>&copy; 2025 All Rights Reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
+
