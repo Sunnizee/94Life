@@ -3,20 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>94Life 熱門影片｜Sunnizee</title>
-  <meta name="description" content="Sunny（Sunnizee）的 94Life 精選影片與社群連結。追蹤 IG @94life_sunnizee，看看最新 Reels 與 YouTube 作品！" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="94Life 熱門影片｜Sunnizee" />
-  <meta property="og:description" content="Sunny（Sunnizee）的 94Life 精選影片與社群連結。追蹤 IG @94life_sunnizee！" />
-  <meta property="og:image" content="https://sunnizee.github.io/94Life/og-image.jpg" />
-  <meta property="og:url" content="https://sunnizee.github.io/94Life/" />
-
-  <!-- 字體最佳化 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet" />
+  <title>Sunnizee｜94Life 個人網站</title>
+  <meta name="description" content="Sunny（Sunnizee）的 94Life 個人網站。探索我的影片、作品與社群連結！" />
 
   <!-- Google Tag Manager -->
   <script>
@@ -32,32 +20,61 @@
     body {
       margin: 0;
       font-family: 'Noto Serif TC', serif;
-      background-color: #f9f9f9;
+      background: #fdfdfd;
       color: #333;
-      text-align: center;
-      padding: 2rem;
+      scroll-behavior: smooth;
     }
+    header {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; font-size: 1.4rem; }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    section:nth-child(even) { background: #f9f9f9; }
     iframe {
       width: 100%;
       max-width: 560px;
       height: 315px;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 1rem auto;
     }
-    a.button {
+    .button {
       display: inline-block;
       margin: 1rem;
       padding: 0.75rem 1.5rem;
-      background-color: #e1306c;
-      color: white;
+      background: #e1306c;
+      color: #fff;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: 0.3s;
     }
-    a.button:hover { background-color: #c2185b; }
+    .button:hover { background: #c2185b; }
+    footer {
+      padding: 2rem;
+      background: #222;
+      color: #fff;
+      text-align: center;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -68,24 +85,58 @@
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <h1>HI 這是 Sunnizee 的 YouTube</h1>
+  <!-- Header -->
+  <header>
+    <h1>Sunnizee 🌞</h1>
+    <nav>
+      <a href="#about">關於我</a>
+      <a href="#works">作品</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+  </header>
 
-  <iframe 
-    src="https://www.youtube.com/embed/cfkG98Qg6Jo" 
-    title="Sunnizee 94Life 精選影片"
-    loading="lazy"
-    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
+  <!-- About -->
+  <section id="about">
+    <h2>關於我</h2>
+    <p>嗨～大家好 我是Sunny桑膩☀️ 也可以叫我麻糬！ <br>
+    94Life 的創作者，喜歡影片製作、旅行、音樂和Marketing。<br>
+    目前正在經營 Reels 與 YouTube，分享生活與創意。</p>
 
-  <a class="button" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer">
-    追蹤 IG @94life_sunnizee
-  </a>
+    <h3>🎬 美國生活 Playlist</h3>
+    <iframe 
+      src="https://www.youtube.com/embed/videoseries?list=PLBZqvC2qnQsA9F2ev1nI-6ZgXl0D3e9EX"
+      title="Sunnizee 美國生活 Playlist"
+      loading="lazy"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </section>
 
-  <p style="margin-top:2rem; font-size: 0.9rem; color: #666;">Sunny 🌞</p>
-</body>
-</html>
+  <!-- Works -->
+  <section id="works">
+    <h2>作品展示</h2>
+    <p>這是我的精選影片：</p>
+    <iframe 
+      src="https://www.youtube.com/embed/cfkG98Qg6Jo" 
+      title="Sunnizee 94Life 精選影片"
+      loading="lazy"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </section>
 
-  <p style="margin-top:2rem; font-size: 0.9rem; color: #666;">Sunny 🌞</p>
+  <!-- Contact / Social -->
+  <section id="contact">
+    <h2>聯絡與社群</h2>
+    <p>歡迎追蹤我的社群或聯絡我合作 ✨</p>
+    <a class="button" href="https://www.instagram.com/94life_sunnizee/" target="_blank" rel="noopener noreferrer">追蹤 IG</a>
+    <a class="button" href="https://www.youtube.com/@sunnizee" target="_blank" rel="noopener noreferrer">訂閱 YouTube</a>
+    <a class="button" href="mailto:yourmail@example.com">聯絡我</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Sunny 🌞 | 94Life 個人網站<br>&copy; 2025 All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
