@@ -45,16 +45,13 @@
       gap:1.5rem;
       margin-top:1.5rem;
     }
-    
-      .video-card{
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  padding:1rem;
-  max-width:300px;   /* 限制最大寬度 */
-  margin:0 auto;     /* 置中 */
-}
-
+    .video-card{
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      padding:1rem;
+      max-width:560px;
+      margin:0 auto;
     }
     .video{width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; background:#000;}
     .video iframe{width:100%; height:100%; border:0}
@@ -87,7 +84,7 @@
     </a>
     <nav>
       <a href="#about">關於我</a>
-      <a href="#works">作品</a>
+      <a href="#works-america">作品</a> <!-- 導覽直接連到美國生活 -->
       <a href="#contact">聯絡</a>
     </nav>
   </header>
@@ -100,11 +97,9 @@
       目前正在經營 Reels 與 YouTube，分享生活與創意。</p>
   </section>
 
-  <!-- 作品 -->
-  <section id="works">
-    <h2>作品</h2>
-
-    <h3>🎬 美國生活系列</h3>
+  <!-- 作品 - 美國生活 -->
+  <section id="works-america">
+    <h2>作品｜美國生活系列</h2>
     <div class="video-grid">
       <div class="video-card">
         <div class="video">
@@ -119,8 +114,11 @@
         <div class="video-title">美國生活 EP2</div>
       </div>
     </div>
+  </section>
 
-    <h3> 精選作品</h3>
+  <!-- 作品 - 精選作品 -->
+  <section id="works-featured">
+    <h2>作品｜精選作品</h2>
     <div class="video-grid">
       <div class="video-card">
         <div class="video">
